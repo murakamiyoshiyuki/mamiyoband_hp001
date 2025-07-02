@@ -127,4 +127,65 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
+
+    // --- Member Modal ---
+    const memberCards = document.querySelectorAll('.member-card');
+    const memberModal = document.getElementById('member-modal');
+
+    if (memberCards.length > 0 && memberModal) {
+        const modalImg = document.getElementById('member-modal-img');
+        const modalName = document.getElementById('member-modal-name');
+        const modalProfile = document.getElementById('member-modal-profile');
+        const closeModal = document.querySelector('.member-modal-close');
+
+        const memberProfiles = {
+            mamiyo: {
+                name: 'マミヨ',
+                profile: 'ダミーテキストダミーテキストダミーテキストダミーテキストダミーテキスト'
+            },
+            rambaar: {
+                name: 'RamBaar',
+                profile: 'ダミーテキストダミーテキストダミーテキストダミーテキストダミーテキスト'
+            },
+            tsukumo: {
+                name: '惺光 玖拾玖',
+                profile: 'ダミーテキストダミーテキストダミーテキストダミーテキストダミーテキスト'
+            },
+            yasuyo: {
+                name: '恭世',
+                profile: 'ダミーテキストダミーテキストダミーテキストダミーテキストダミーテキスト'
+            },
+            murakami: {
+                name: '村上 良之',
+                profile: 'ダミーテキストダミーテキストダミーテキストダミーテキストダミーテキスト'
+            }
+        };
+
+        memberCards.forEach(card => {
+            card.addEventListener('click', () => {
+                const memberId = card.dataset.member;
+                const memberData = memberProfiles[memberId];
+                const memberImgSrc = card.querySelector('.member-photo').src;
+
+                if (memberData) {
+                    modalImg.src = memberImgSrc;
+                    modalName.textContent = memberData.name;
+                    modalProfile.textContent = memberData.profile;
+                    memberModal.style.display = 'flex';
+                }
+            });
+        });
+
+        const closeMemberModal = () => {
+            memberModal.style.display = 'none';
+        }
+
+        closeModal.addEventListener('click', closeMemberModal);
+
+        memberModal.addEventListener('click', (e) => {
+            if (e.target === memberModal) {
+                closeMemberModal();
+            }
+        });
+    }
 });

@@ -594,6 +594,7 @@ footer {
 
 .member-card:hover {
     transform: translateY(-10px);
+    cursor: pointer;
 }
 
 .member-photo {
@@ -642,4 +643,67 @@ footer {
     .member-grid {
         grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
     }
+}
+
+/* --- Member Modal --- */
+.member-modal {
+    display: none;
+    position: fixed;
+    z-index: 1001;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.95);
+    align-items: center;
+    justify-content: center;
+}
+
+.member-modal-content {
+    position: relative;
+    background-color: #111;
+    margin: auto;
+    padding: 40px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 600px;
+    text-align: center;
+    border-radius: 10px;
+    box-shadow: 0 5px 25px rgba(0,0,0,0.7);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.member-modal-close {
+    position: absolute;
+    top: 15px;
+    right: 25px;
+    color: #aaa;
+    font-size: 32px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+#member-modal-img {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 2rem;
+    border: 5px solid var(--color-gold);
+}
+
+#member-modal-name {
+    font-family: var(--font-heading-jp);
+    font-size: 2.5rem;
+    color: var(--color-white);
+    margin-bottom: 1rem;
+}
+
+#member-modal-profile {
+    font-size: 1rem;
+    line-height: 1.8;
+    color: var(--color-silver);
 }
