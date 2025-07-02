@@ -137,6 +137,10 @@ document.addEventListener('DOMContentLoaded', () => {
         const modalName = document.getElementById('member-modal-name');
         const modalProfile = document.getElementById('member-modal-profile');
         const closeModal = document.querySelector('.member-modal-close');
+        const prevButton = document.querySelector('.member-modal-prev');
+        const nextButton = document.querySelector('.member-modal-next');
+
+        let currentMemberIndex = 0;
 
         const memberProfiles = {
             mamiyo: {
@@ -161,18 +165,26 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         };
 
-        memberCards.forEach(card => {
-            card.addEventListener('click', () => {
-                const memberId = card.dataset.member;
-                const memberData = memberProfiles[memberId];
-                const memberImgSrc = card.querySelector('.member-photo').src;
+        const memberOrder = Array.from(memberCards).map(card => card.dataset.member);
 
-                if (memberData) {
-                    modalImg.src = memberImgSrc;
-                    modalName.textContent = memberData.name;
-                    modalProfile.textContent = memberData.profile;
-                    memberModal.style.display = 'flex';
-                }
+        function openMemberModal(index) {
+            const memberId = memberOrder[index];
+            const memberData = memberProfiles[memberId];
+            const memberCard = document.querySelector(`.member-card[data-member="${memberId}"]`);
+            const memberImgSrc = memberCard.querySelector('.member-photo').src;
+
+            if (memberData) {
+                modalImg.src = memberImgSrc;
+                modalName.textContent = memberData.name;
+                modalProfile.textContent = memberData.profile;
+                memberModal.style.display = 'flex';
+                currentMemberIndex = index;
+            }
+        }
+
+        memberCards.forEach((card, index) => {
+            card.addEventListener('click', () => {
+                openMemberModal(index);
             });
         });
 
@@ -186,6 +198,16 @@ document.addEventListener('DOMContentLoaded', () => {
             if (e.target === memberModal) {
                 closeMemberModal();
             }
+        });
+
+        prevButton.addEventListener('click', () => {
+            currentMemberIndex = (currentMemberIndex - 1 + memberOrder.length) % memberOrder.length;
+            openMemberModal(currentMemberIndex);
+        });
+
+        nextButton.addEventListener('click', () => {
+            currentMemberIndex = (currentMemberIndex + 1) % memberOrder.length;
+            openMemberModal(currentMemberIndex);
         });
     }
 });

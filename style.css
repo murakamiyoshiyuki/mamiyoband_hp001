@@ -664,10 +664,10 @@ footer {
     position: relative;
     background-color: #111;
     margin: auto;
-    padding: 40px;
+    padding: 30px;
     border: 1px solid #888;
-    width: 80%;
-    max-width: 600px;
+    width: 90%;
+    max-width: 650px; /* 少し幅を広げます */
     text-align: center;
     border-radius: 10px;
     box-shadow: 0 5px 25px rgba(0,0,0,0.7);
@@ -687,12 +687,14 @@ footer {
 }
 
 #member-modal-img {
-    width: 200px;
-    height: 200px;
-    border-radius: 50%;
-    object-fit: cover;
+    width: auto; /* 横幅を自動調整 */
+    max-width: 100%; /* コンテナの最大幅に合わせる */
+    height: auto; /* 高さを自動調整 */
+    max-height: 65vh; /* 画面の高さに対して最大値を設定 */
+    border-radius: 8px; /* 円形を解除し、角を少し丸める */
+    object-fit: contain; /* 画像全体が表示されるようにする */
     margin-bottom: 2rem;
-    border: 5px solid var(--color-gold);
+    /* borderを削除 */
 }
 
 #member-modal-name {
@@ -706,4 +708,33 @@ footer {
     font-size: 1rem;
     line-height: 1.8;
     color: var(--color-silver);
+}
+
+.member-modal-prev, .member-modal-next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  padding: 16px;
+  margin-top: -50px;
+  color: white;
+  font-weight: bold;
+  font-size: 20px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.member-modal-next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+.member-modal-prev {
+    left: 0;
+}
+
+.member-modal-prev:hover, .member-modal-next:hover {
+  background-color: rgba(0,0,0,0.8);
 }
