@@ -174,22 +174,22 @@ h3 {
 /* --- CTA Button --- */
 .cta-button {
     display: inline-block;
-    background: linear-gradient(45deg, var(--color-red), #E01E3E);
-    color: var(--color-white);
+    background: linear-gradient(45deg, #9ACD32, #ADFF2F); /* 黄緑系のグラデーション */
+    color: var(--color-black);
     padding: 1.2rem 3rem;
     border-radius: 50px;
     text-align: center;
     font-family: var(--font-body);
     font-weight: 700;
-    box-shadow: 0 5px 15px rgba(195, 14, 46, 0.4);
+    box-shadow: 0 5px 15px rgba(154, 205, 50, 0.4);
     transition: all 0.3s ease;
     border: none;
 }
 
 .cta-button:hover {
     transform: scale(1.05) translateY(-3px);
-    box-shadow: 0 8px 25px rgba(195, 14, 46, 0.6);
-    color: var(--color-white);
+    box-shadow: 0 8px 25px rgba(154, 205, 50, 0.6);
+    color: var(--color-black);
 }
 
 .cta-button span {
@@ -516,8 +516,8 @@ h3 {
 }
 
 .benefit-item span {
-    background: var(--color-red);
-    color: var(--color-white);
+    background: #9ACD32; /* 黄緑 */
+    color: var(--color-black);
     border-radius: 50%;
     width: 35px;
     height: 35px;
