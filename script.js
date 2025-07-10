@@ -54,35 +54,76 @@ document.addEventListener('DOMContentLoaded', () => {
             const slots = Array.from(heroGrid.querySelectorAll('.hero-image-slot'));
             const shuffledMembers = shuffle([...memberNames]);
 
-            // Determine which slots get people and which get chairs
-            const personSlots = slots.filter((_, i) => (isPersonSlotOdd ? (i + 1) % 2 !== 0 : (i + 1) % 2 === 0));
-            const chairSlots = slots.filter((_, i) => (isPersonSlotOdd ? (i + 1) % 2 === 0 : (i + 1) % 2 !== 0));
+            // Check if mobile view (768px or less)
+            const isMobile = window.matchMedia('(max-width: 768px)').matches;
 
-            // Fade out
-            slots.forEach(slot => slot.style.opacity = 0);
-
-            setTimeout(() => {
-                // Assign images to person slots
-                personSlots.forEach((slot, i) => {
-                    const memberName = shuffledMembers[i];
-                    const img = slot.querySelector('img');
-                    img.src = getRandomImage(memberName);
-                    img.alt = memberName;
+            if (isMobile) {
+                // Mobile: Fixed checkerboard pattern - only swap member images
+                // Members are at positions 0, 2, 4, 6, 8 (1st, 3rd, 5th, 7th, 9th)
+                const memberSlotIndices = [0, 2, 4, 6, 8];
+                const chairSlotIndices = [1, 3, 5, 7]; // Chair positions
+                
+                // Fade out all slots (both members and chairs)
+                slots.forEach((slot, i) => {
+                    if (i < 9) slot.style.opacity = 0; // Only first 9 slots
                 });
 
-                // Assign images to chair slots
-                chairSlots.forEach(slot => {
-                    const img = slot.querySelector('img');
-                    img.src = chairImageSource;
-                    img.alt = '椅子';
-                });
+                setTimeout(() => {
+                    // Update member images
+                    memberSlotIndices.forEach((slotIndex, memberIndex) => {
+                        if (slots[slotIndex] && shuffledMembers[memberIndex]) {
+                            const img = slots[slotIndex].querySelector('img');
+                            img.src = getRandomImage(shuffledMembers[memberIndex]);
+                            img.alt = shuffledMembers[memberIndex];
+                        }
+                    });
 
-                // Fade in
-                slots.forEach(slot => slot.style.opacity = 1);
+                    // Re-set chair images (even though they don't change)
+                    chairSlotIndices.forEach(slotIndex => {
+                        if (slots[slotIndex]) {
+                            const img = slots[slotIndex].querySelector('img');
+                            img.src = chairImageSource;
+                            img.alt = '椅子';
+                        }
+                    });
 
-                // Flip the state for the next run
-                isPersonSlotOdd = !isPersonSlotOdd;
-            }, 500); // Match CSS transition duration
+                    // Fade in all slots
+                    slots.forEach((slot, i) => {
+                        if (i < 9) slot.style.opacity = 1; // Only first 9 slots
+                    });
+                }, 500);
+            } else {
+                // Desktop: Original behavior
+                // Determine which slots get people and which get chairs
+                const personSlots = slots.filter((_, i) => (isPersonSlotOdd ? (i + 1) % 2 !== 0 : (i + 1) % 2 === 0));
+                const chairSlots = slots.filter((_, i) => (isPersonSlotOdd ? (i + 1) % 2 === 0 : (i + 1) % 2 !== 0));
+
+                // Fade out
+                slots.forEach(slot => slot.style.opacity = 0);
+
+                setTimeout(() => {
+                    // Assign images to person slots
+                    personSlots.forEach((slot, i) => {
+                        const memberName = shuffledMembers[i];
+                        const img = slot.querySelector('img');
+                        img.src = getRandomImage(memberName);
+                        img.alt = memberName;
+                    });
+
+                    // Assign images to chair slots
+                    chairSlots.forEach(slot => {
+                        const img = slot.querySelector('img');
+                        img.src = chairImageSource;
+                        img.alt = '椅子';
+                    });
+
+                    // Fade in
+                    slots.forEach(slot => slot.style.opacity = 1);
+
+                    // Flip the state for the next run
+                    isPersonSlotOdd = !isPersonSlotOdd;
+                }, 500); // Match CSS transition duration
+            }
         }
 
         setInterval(swapImages, 3000); // Swap every 3 seconds
