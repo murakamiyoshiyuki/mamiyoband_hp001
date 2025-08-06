@@ -242,6 +242,32 @@ h3 {
     text-align: left;
 }
 
+.youtube-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 15px;
+    padding: 8px 16px;
+    background-color: #FF0000;
+    color: white;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+.youtube-link:hover {
+    background-color: #CC0000;
+}
+
+.youtube-link svg {
+    width: 20px;
+    height: 20px;
+}
+
+.youtube-link span {
+    font-size: 14px;
+    font-weight: 500;
+}
+
 .music-title {
     font-family: var(--font-heading-jp);
     font-size: 2rem;
@@ -281,6 +307,40 @@ h3 {
     max-width: 900px;
     margin: 0 auto;
     border-top: 1px solid #333;
+}
+
+/* --- Live Info Section --- */
+.live-list {
+    max-width: 900px;
+    margin: 0 auto;
+    border-top: 1px solid #333;
+}
+
+.live-item {
+    display: flex;
+    align-items: baseline;
+    gap: 2rem;
+    padding: 1.5rem 0;
+    border-bottom: 1px solid #333;
+    transition: all 0.3s ease;
+    color: var(--color-white);
+    text-decoration: none;
+}
+
+.live-item:hover {
+    background-color: rgba(212, 175, 55, 0.1);
+    padding-left: 1rem;
+}
+
+.live-date {
+    font-size: 0.9rem;
+    color: var(--color-gold);
+    min-width: 100px;
+}
+
+.live-title {
+    font-size: 1.1rem;
+    font-weight: 500;
 }
 
 .news-item {
