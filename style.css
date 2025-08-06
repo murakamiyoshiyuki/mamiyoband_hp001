@@ -242,6 +242,11 @@ h3 {
     text-align: left;
 }
 
+.music-youtube-link {
+    text-align: center;
+    margin-top: 40px;
+}
+
 .youtube-link {
     display: inline-flex;
     align-items: center;
@@ -378,6 +383,7 @@ h3 {
 .news-category.release { background-color: #4ECDC4; }
 .news-category.media { background-color: #45B7D1; }
 .news-category.goods { background-color: #F7B801; }
+.news-category.info { background-color: #9B59B6; }
 
 .news-title {
     color: var(--color-white);
