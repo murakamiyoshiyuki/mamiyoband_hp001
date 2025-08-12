@@ -145,23 +145,74 @@ document.addEventListener('DOMContentLoaded', () => {
         const memberProfiles = {
             mamiyo: {
                 name: 'マミヨ',
-                profile: 'ダミーテキストダミーテキストダミーテキストダミーテキストダミーテキスト'
+                profile: `VOCAL / シンガーソングライター
+札幌出身/144cm/2児♂の母。
+
+TBS系昼ドラ主題歌でメジャーデビュー、4thシングル「小さな手」はYouTubeで43万再生を超える。
+ライブ活動の他、アニメ・アーティスト・CMなど多数楽曲提供している。
+2025年6月には大阪万博にソロ歌手として出演する。
+
+2017年より、ドラム村上と古事記project株式会社を立ち上げ副代表も務める。
+
+【主な作品】
+・「理由」(TBS系ドラマ主題歌)でメジャーデビュー
+・「小さな手」(エリエールの紙オムツ「Goo.n(グーン)」2010年度イメージソング)
+・アニメ「蒼穹のファフナー EXODUS」 「Oddesey」作曲・編曲
+・アニメ「18if」エンディング曲　作詞
+...etc`
             },
             rambaar: {
                 name: 'RamBaar',
-                profile: 'ダミーテキストダミーテキストダミーテキストダミーテキストダミーテキスト'
+                profile: `Rapper / Singer
+北海道出身/178cm/芋には目がない
+
+16歳からラップのリリックを書き始め、インターネット上への投稿など活動を拡大。
+2018年には現在の相方であるPanbitが主宰するレーベル「Monochrome Station Label.」に立ち上げから参加。
+W!RELESSというユニットでEP「S!GNAL」のリリースや他アーティストの楽曲参加、ライブ出演などを行う。W!RELESSでの活動を経て、2024年よりPanbitとChrome Yellowというクルーを結成。レーベル主催ライブや楽曲制作など幅広く活動中！クルーでの活動の他、舞台やバンド、演歌などジャンルレスな活動を展開している。
+
+Monochrome Station Label.所属/Chrome Yellow
+レーベル内外の楽曲MIX・マスタリングも担当。
+
+【主な作品】
+・ikamデビューシングル「Kiss Kiss Kiss feat.RamBaar 」ラップ歌唱
+・カラフルパレット 「哀セレナーデ」ラップ歌唱
+・Chrome Yellow「Batlle!!!」リリース
+・Chrome Yellow「千紫万紅」Youtube投稿
+・【Rapアレンジ】砂の惑星 歌ってみた【RamBaar】ニコニコ動画 5.2万回再生
+・「とこちゃんの誕生日にラップとMVを作って祝ってみました！！！！！」YouTube 6万回再生`
             },
             tsukumo: {
                 name: '惺光 玖拾玖',
-                profile: 'ダミーテキストダミーテキストダミーテキストダミーテキストダミーテキスト'
+                profile: `GUITAR / composer / arranger
+エモーショナルな即興性と歌心あるメロディ表現が持ち味。
+
+10代はネットシーンで活動を重ね、20代よりバンド・ユニットや各種サポートで本格化。2012〜13年のリーダーバンド VolgAnet Afternoon では Zepp DiverCity Tokyo に出演。
+2021年から自身の名前を命名したタイミングで「小次郎 feat. 惺光 玖拾玖」に参加し、ボーカルラインをギターで"歌う"アレンジで個性を確立。2022年、ホッピー神山氏プロデュースのアルバム『破滅の劫火』に参加。アナログ録音作品としてリリースされ、音楽雑誌 Player に掲載。2023年にはO-Westに出演。
+2024年はギタリストの祭典 GuitarCanvas のレギュラーメンバーとして活動。5月に師・江藤雅樹氏率いる GarjueLab へ正規メンバーとして参加。10月にはマミヨバンドのギタリストとしても加入。
+現在は両グループに加えて他アーティストのサポート／セッションも不定期に行い、ライブとレコーディングの両面で表現を深めている。
+
+所属バンド：GarjueLab / マミヨバンド`
             },
             yasuyo: {
                 name: '恭世',
-                profile: 'ダミーテキストダミーテキストダミーテキストダミーテキストダミーテキスト'
+                profile: `BASS
+池田達也氏に師事。
+
+SOUL/ROCK/POPS/JAZZ等多ジャンルを弾きこなすが歌謡曲をこよなく愛する。
+さまざまなライブ、発表会、パーティー等で演奏をおこなっており
+ベーシストのみならず楽曲制作、ベースレッスン、令和歌謡楽技団およびRKG companyの代表をつとめ、イベントの企画運営、アーティストプロデュースもおこなっている`
             },
             murakami: {
                 name: '村上 良之',
-                profile: 'ダミーテキストダミーテキストダミーテキストダミーテキストダミーテキスト'
+                profile: `DRUMS / Producer
+武蔵野音楽大学卒。
+THE SAX-NIGHTでavexよりデビュー。
+ex)The spade13、pezite、THE SAX-NIGHT
+
+2017年よりマミヨと共に古事記project株式会社を立ち上げ、代表取締役を務める。
+プロデューサー、ディレクター、演出家、として様々なイベントやコンテンツの企画運営に携わる。
+
+2023年よりYoutube講演家の鴨頭嘉人氏のバンド「KAMOBAND」でドラムを務める。`
             }
         };
 
@@ -176,7 +227,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (memberData) {
                 modalImg.src = memberImgSrc;
                 modalName.textContent = memberData.name;
-                modalProfile.textContent = memberData.profile;
+                modalProfile.innerHTML = memberData.profile.replace(/\n/g, '<br>');
                 memberModal.style.display = 'flex';
                 currentMemberIndex = index;
             }

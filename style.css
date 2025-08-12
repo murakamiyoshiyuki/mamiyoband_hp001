@@ -208,22 +208,14 @@ h3 {
 .music-grid {
     display: grid;
     gap: 4rem;
+    justify-items: center;
 }
 
 .music-item {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 2.5rem;
-    align-items: center;
-}
-
-/* Alternate layout for every other item */
-.music-item:nth-child(even) {
-    grid-template-columns: 1fr 1fr;
-}
-
-.music-item:nth-child(even) .music-video-wrapper {
-    order: 2;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    max-width: 800px;
 }
 
 .music-video-wrapper {
@@ -231,6 +223,8 @@ h3 {
     border-radius: 8px;
     overflow: hidden;
     box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    width: 100%;
+    max-width: 600px;
 }
 
 .music-video-wrapper iframe {
@@ -295,15 +289,8 @@ h3 {
 }
 
 @media (max-width: 900px) {
-    .music-item,
-    .music-item:nth-child(even) {
-        grid-template-columns: 1fr;
-    }
-    .music-item:nth-child(even) .music-video-wrapper {
-        order: 0;
-    }
-    .music-info {
-        text-align: center;
+    .music-video-wrapper {
+        max-width: 100%;
     }
 }
 
@@ -368,8 +355,9 @@ h3 {
 }
 
 .news-category {
-    font-family: var(--font-heading);
-    font-size: 0.8rem;
+    font-family: var(--font-body);
+    font-size: 0.75rem;
+    font-weight: 600;
     padding: 0.3rem 0.8rem;
     border-radius: 20px;
     color: var(--color-black);
@@ -377,6 +365,7 @@ h3 {
     width: 80px;
     text-align: center;
     flex-shrink: 0;
+    letter-spacing: 0.5px;
 }
 
 .news-category.live { background-color: #FF6B6B; }
@@ -384,6 +373,24 @@ h3 {
 .news-category.media { background-color: #45B7D1; }
 .news-category.goods { background-color: #F7B801; }
 .news-category.info { background-color: #9B59B6; }
+
+.live-category {
+    font-family: var(--font-body);
+    font-size: 0.7rem;
+    font-weight: 600;
+    padding: 0.25rem 0.6rem;
+    border-radius: 15px;
+    color: var(--color-black);
+    margin-left: 1rem;
+    text-align: center;
+    display: inline-block;
+    flex-shrink: 0;
+    letter-spacing: 0.5px;
+}
+
+.live-category.band { background-color: #FF6B6B; }
+.live-category.acoustic { background-color: #4ECDC4; }
+.live-category.solo { background-color: #F7B801; }
 
 .news-title {
     color: var(--color-white);
@@ -771,9 +778,14 @@ footer {
 }
 
 #member-modal-profile {
-    font-size: 1rem;
+    font-size: 0.95rem;
     line-height: 1.8;
     color: var(--color-silver);
+    text-align: left;
+    white-space: pre-line;
+    max-height: 400px;
+    overflow-y: auto;
+    padding: 0 1rem;
 }
 
 .member-modal-prev, .member-modal-next {
