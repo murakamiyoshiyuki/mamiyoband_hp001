@@ -816,3 +816,85 @@ footer {
 .member-modal-prev:hover, .member-modal-next:hover {
   background-color: rgba(0,0,0,0.8);
 }
+
+/* Special Link Button on Top Page */
+.hero-special-btn {
+    display: inline-block;
+    background: rgba(0, 0, 0, 0.7);
+    border: 1px solid var(--color-gold);
+    color: #fff;
+    text-decoration: none;
+    padding: 15px 30px;
+    margin-top: 30px;
+    border-radius: 4px;
+    transition: all 0.3s;
+    text-align: center;
+    backdrop-filter: blur(5px);
+}
+
+.hero-special-btn:hover {
+    background: var(--color-re-you-red, #A00C28);
+    border-color: var(--color-re-you-red, #A00C28);
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+}
+
+.hero-special-btn span {
+    display: block;
+}
+
+.special-sub {
+    font-size: 0.9rem;
+    color: var(--color-gold);
+    margin-bottom: 5px;
+    font-family: 'Cinzel', serif;
+}
+
+.special-main {
+    font-size: 1.2rem;
+    font-weight: bold;
+    letter-spacing: 0.1em;
+}
+
+/* Banner Adjustments */
+.banner-jacket {
+    width: 450px; /* Increased to 450px */
+    max-width: 100%;
+    box-shadow: 0 0 20px rgba(0,0,0,0.6);
+    margin-bottom: 20px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.banner-desc {
+    display: inline-block;
+    background: var(--color-re-you-red, #A00C28);
+    color: #fff;
+    padding: 10px 30px;
+    border-radius: 30px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    letter-spacing: 0.1em;
+    margin-top: 15px;
+    box-shadow: 0 5px 15px rgba(160, 12, 40, 0.4);
+    transition: transform 0.3s;
+}
+
+.special-banner-link:hover .banner-desc {
+    transform: scale(1.05);
+    background: #c91034;
+}
+
+/* Music Grid Adjustment for 3 columns */
+.music-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+@media (max-width: 768px) {
+    .music-grid {
+        grid-template-columns: 1fr;
+    }
+}
