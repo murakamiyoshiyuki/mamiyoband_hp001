@@ -11,9 +11,11 @@
     <meta property="og:url" content="https://mamiyoband.com/special-re-you.html">
     <meta property="og:image" content="https://mamiyoband.com/assets/images/re_you_jacket.png">
     <meta property="og:description" content="24年の時を経て、名曲が蘇る。マミヨバンド 1st Album『Re:you』2026.3.15 RELEASE">
-    
+
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=Noto+Serif+JP:wght@300;400;600&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=Noto+Serif+JP:wght@300;400;600&display=swap"
+        rel="stylesheet">
     <style>
         /* Special Page Styles */
         :root {
@@ -138,20 +140,38 @@
             left: -50%;
             width: 200%;
             height: 200%;
-            background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.3) 50%, rgba(255,255,255,0) 100%);
+            background: linear-gradient(to right, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.3) 50%, rgba(255, 255, 255, 0) 100%);
             transform: rotate(45deg);
             animation: shine 3s infinite;
         }
 
         @keyframes shine {
-            0% { left: -100%; top: -100%; }
-            20% { left: 100%; top: 100%; }
-            100% { left: 100%; top: 100%; }
+            0% {
+                left: -100%;
+                top: -100%;
+            }
+
+            20% {
+                left: 100%;
+                top: 100%;
+            }
+
+            100% {
+                left: 100%;
+                top: 100%;
+            }
         }
 
         @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-15px); }
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-15px);
+            }
         }
 
         /* Sections */
@@ -159,7 +179,7 @@
             padding: 80px 20px;
             max-width: 1000px;
             margin: 0 auto;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .lp-title {
@@ -242,7 +262,7 @@
             background: #000;
             border: 1px solid #333;
         }
-        
+
         .video-placeholder {
             position: absolute;
             top: 0;
@@ -255,7 +275,7 @@
             flex-direction: column;
             color: #555;
         }
-        
+
         .video-placeholder i {
             font-size: 4rem;
             margin-bottom: 20px;
@@ -279,9 +299,11 @@
             .album-title-large {
                 font-size: 3rem;
             }
+
             .jacket-img {
                 max-width: 80%;
             }
+
             .reserve-btn {
                 font-size: 1.4rem;
                 padding: 15px 30px;
@@ -293,7 +315,8 @@
 <body>
     <!-- Navigation (Simple) -->
     <nav style="position: absolute; top: 0; width: 100%; padding: 20px; z-index: 100; text-align: center;">
-        <a href="index.html" style="color: #fff; text-decoration: none; font-size: 1.2rem; font-family: 'Bebas Neue'; letter-spacing: 2px;">
+        <a href="index.html"
+            style="color: #fff; text-decoration: none; font-size: 1.2rem; font-family: 'Bebas Neue'; letter-spacing: 2px;">
             ← BACK TO OFFICIAL SITE
         </a>
     </nav>
@@ -308,10 +331,15 @@
             <h1 class="album-title-large">Re:you</h1>
             <p style="font-size: 1.2rem; margin-bottom: 10px;">MAMIYO BAND 1st ALBUM</p>
             <p class="release-date">2026.3.15 RELEASE</p>
-            
+
             <div class="cv-area">
-                <a href="https://book.stripe.com/aFadR98oCebl7DD2wu5sA0J" target="_blank" class="reserve-btn">
-                    CD先行予約はこちら
+                <a href="https://www.tunecore.co.jp/artists?id=1094294" target="_blank"
+                    class="reserve-btn streaming-btn-main">
+                    配信はこちら
+                </a>
+                <br><br>
+                <a href="https://book.stripe.com/aFadR98oCebl7DD2wu5sA0J" target="_blank" class="reserve-btn cd-btn">
+                    CDの通販はこちら
                 </a>
                 <p style="margin-top: 15px; font-size: 0.9rem; color: #aaa;">※Stripe決済ページへ移動します</p>
             </div>
@@ -361,12 +389,9 @@
         <section class="lp-section">
             <h2 class="lp-title">XFD MOVIE</h2>
             <div class="video-container">
-                <div class="video-placeholder">
-                    <p style="font-family: 'Bebas Neue'; font-size: 2rem;">CROSSFADE DEMO</p>
-                    <p>COMING SOON</p>
-                </div>
-                <!-- YouTube Iframe will go here -->
-                <!-- <iframe ... ></iframe> -->
+                <iframe src="https://www.youtube.com/embed/2v0O5VWttMw" title="YouTube video player" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowfullscreen></iframe>
             </div>
         </section>
 
@@ -379,9 +404,14 @@
 
         <section class="lp-section" style="text-align: center; border-bottom: none;">
             <div class="cv-area">
-                <p style="font-size: 1.5rem; margin-bottom: 20px; font-weight: bold;">先行予約受付中！</p>
-                <a href="https://book.stripe.com/aFadR98oCebl7DD2wu5sA0J" target="_blank" class="reserve-btn">
-                    今すぐ予約する
+                <p style="font-size: 1.5rem; margin-bottom: 20px; font-weight: bold;">好評配信中＆CD通販受付中！</p>
+                <a href="https://www.tunecore.co.jp/artists?id=1094294" target="_blank"
+                    class="reserve-btn streaming-btn-main">
+                    配信はこちら
+                </a>
+                <br><br>
+                <a href="https://book.stripe.com/aFadR98oCebl7DD2wu5sA0J" target="_blank" class="reserve-btn cd-btn">
+                    CDの通販はこちら
                 </a>
             </div>
         </section>
@@ -392,4 +422,5 @@
     </footer>
 
 </body>
+
 </html>
