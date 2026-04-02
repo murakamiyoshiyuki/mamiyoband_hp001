@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KAMOBAND×マミヨバンド 2MAN LIVE SHOW - マミヨバンド</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .live-detail {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 30px;
+            color: var(--color-gold);
+        }
+        .live-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        .live-header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            font-family: var(--font-heading-jp);
+        }
+        .live-venue {
+            font-size: 1.2rem;
+            color: var(--color-gold);
+        }
+        .live-images {
+            margin: 40px 0;
+            text-align: center;
+        }
+        .live-images img {
+            max-width: 100%;
+            margin-bottom: 30px;
+        }
+        .photo-gallery {
+            margin-top: 50px;
+        }
+        .photo-gallery h2 {
+            text-align: center;
+            margin-bottom: 30px;
+            font-family: var(--font-heading-jp);
+        }
+        .photo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 15px;
+        }
+        .photo-thumb {
+            cursor: pointer;
+            overflow: hidden;
+            aspect-ratio: 1;
+            border-radius: 5px;
+        }
+        .photo-thumb img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+        .photo-thumb:hover img {
+            transform: scale(1.1);
+        }
+        
+        /* Lightbox styles */
+        .photo-lightbox {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.95);
+        }
+        .photo-lightbox.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .lightbox-content {
+            max-width: 90%;
+            max-height: 90%;
+        }
+        .lightbox-close {
+            position: absolute;
+            top: 20px;
+            right: 40px;
+            color: #f1f1f1;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        .lightbox-close:hover {
+            color: var(--color-gold);
+        }
+        .lightbox-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #f1f1f1;
+            font-size: 40px;
+            cursor: pointer;
+            padding: 10px;
+            user-select: none;
+        }
+        .lightbox-nav:hover {
+            color: var(--color-gold);
+        }
+        .lightbox-prev {
+            left: 20px;
+        }
+        .lightbox-next {
+            right: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="live-detail">
+        <a href="index.html#live-info" class="back-link">← LIVE INFO一覧に戻る</a>
+        
+        <div class="live-header">
+            <p class="live-date">2024.07.03</p>
+            <h1>KAMOBAND（鴨頭嘉人）×マミヨバンド 2MAN LIVE SHOW</h1>
+            <p class="live-venue">東京キネマ倶楽部</p>
+        </div>
+
+        <div class="live-images">
+            <img src="素材/LIVE/2024.07.03/フライヤー.png" alt="フライヤー">
+            <img src="素材/LIVE/2024.07.03/Tシャツ.png" alt="Tシャツ">
+        </div>
+
+        <div class="photo-gallery">
+            <h2>LIVE PHOTOS</h2>
+            <div class="photo-grid" id="photoGrid">
+                <!-- Photos will be added by JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Lightbox -->
+    <div id="photoLightbox" class="photo-lightbox">
+        <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
+        <span class="lightbox-nav lightbox-prev" onclick="changePhoto(-1)">&#10094;</span>
+        <span class="lightbox-nav lightbox-next" onclick="changePhoto(1)">&#10095;</span>
+        <img class="lightbox-content" id="lightboxImg">
+    </div>
+
+    <script>
+        const photos = [
+            '_MG_5044.jpg', '_MG_5046.jpg', '_MG_6042.jpg', '_MG_6049.jpg', '_MG_6052.jpg',
+            '_MG_6054.jpg', '_MG_6059.jpg', '_MG_6070.jpg', '_MG_6079.jpg', '_MG_6090.jpg',
+            '_MG_6091.jpg', '_MG_6119.jpg', '_MG_6165.jpg', '_MG_6171.jpg', '_MG_6174.jpg',
+            '_MG_6187.jpg', '_MG_6188.jpg', '_MG_6211.jpg', '_MG_6214.jpg', '_MG_6219.jpg',
+            '_MG_6230.jpg', '_MG_6239.jpg', '_MG_6297.jpg', '_MG_6298.jpg', '_MG_6299.jpg',
+            '_MG_6321.jpg', '_MG_6323.jpg', '_MG_6327.jpg', '_MG_6328.jpg', '_MG_6332.jpg',
+            '_MG_6357.jpg', '_MG_6359.jpg', '_MG_6369.jpg', '_MG_6371.jpg', '_MG_6374.jpg',
+            '_MG_6376.jpg', '_MG_6385.jpg', '_MG_6390.jpg', '_MG_6400.jpg', '_MG_6406.jpg',
+            '_MG_6433.jpg', '_MG_6435.jpg', '_MG_6439.jpg', '_MG_6568.jpg', '_MG_6660.jpg',
+            '_MG_6683.jpg', '_MG_6685.jpg', '_MG_6701.jpg', '_MG_6719.jpg', '_MG_6725.jpg',
+            '_MG_6730.jpg', '_MG_6744.jpg', '_MG_6749.jpg'
+        ];
+        
+        let currentPhotoIndex = 0;
+        const basePath = '素材/LIVE/2024.07.03/LIVE写真/';
+
+        // Create photo grid
+        const photoGrid = document.getElementById('photoGrid');
+        photos.forEach((photo, index) => {
+            if (index < 20) { // Show only first 20 photos as thumbnails
+                const div = document.createElement('div');
+                div.className = 'photo-thumb';
+                div.onclick = () => openLightbox(index);
+                div.innerHTML = `<img src="${basePath}${photo}" alt="LIVE写真${index + 1}">`;
+                photoGrid.appendChild(div);
+            }
+        });
+
+        function openLightbox(index) {
+            currentPhotoIndex = index;
+            document.getElementById('photoLightbox').classList.add('active');
+            document.getElementById('lightboxImg').src = basePath + photos[index];
+        }
+
+        function closeLightbox() {
+            document.getElementById('photoLightbox').classList.remove('active');
+        }
+
+        function changePhoto(direction) {
+            currentPhotoIndex += direction;
+            if (currentPhotoIndex < 0) currentPhotoIndex = photos.length - 1;
+            if (currentPhotoIndex >= photos.length) currentPhotoIndex = 0;
+            document.getElementById('lightboxImg').src = basePath + photos[currentPhotoIndex];
+        }
+
+        // Keyboard navigation
+        document.addEventListener('keydown', function(e) {
+            if (document.getElementById('photoLightbox').classList.contains('active')) {
+                if (e.key === 'Escape') closeLightbox();
+                if (e.key === 'ArrowLeft') changePhoto(-1);
+                if (e.key === 'ArrowRight') changePhoto(1);
+            }
+        });
+    </script>
+</body>
+</html>
