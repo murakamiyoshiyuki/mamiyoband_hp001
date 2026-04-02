@@ -327,7 +327,9 @@ h3 {
 .live-date {
     font-size: 0.9rem;
     color: var(--color-gold);
-    min-width: 100px;
+    min-width: 150px;
+    white-space: nowrap;
+    flex-shrink: 0;
 }
 
 .live-title {
@@ -408,6 +410,9 @@ h3 {
     .news-category {
         margin-bottom: 0.8rem;
         margin-right: 0;
+    }
+    .live-item {
+        gap: 1rem;
     }
 }
 
