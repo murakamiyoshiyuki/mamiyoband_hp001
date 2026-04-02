@@ -1,0 +1,26 @@
+# Windows system files
+*:Zone.Identifier
+Thumbs.db
+Desktop.ini
+
+# Mac system files
+.DS_Store
+
+# Temporary files
+*.tmp
+*.temp
+nul
+
+# IDE files
+.vscode/
+.idea/
+*.code-workspace
+
+# Node modules (if using in future)
+node_modules/
+
+# Log files
+*.log
+
+# Claude settings
+.claude/
