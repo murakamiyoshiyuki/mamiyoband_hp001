@@ -903,3 +903,46 @@ footer {
         grid-template-columns: 1fr;
     }
 }
+
+/* Streaming Button (Main) */
+.streaming-btn-main {
+    display: inline-block;
+    background: linear-gradient(45deg, #A00C28, #ff1a4b);
+    color: #fff;
+    font-size: 1.8rem;
+    font-weight: bold;
+    padding: 20px 60px;
+    border-radius: 50px;
+    text-decoration: none;
+    letter-spacing: 0.1em;
+    box-shadow: 0 0 30px rgba(160, 12, 40, 0.4);
+    transition: all 0.3s ease;
+    border: 2px solid #ff1a4b;
+}
+
+.streaming-btn-main:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 50px rgba(160, 12, 40, 0.6);
+    border-color: #fff;
+}
+
+.cd-btn {
+    display: inline-block;
+    background: linear-gradient(45deg, #222, #444);
+    color: #fff;
+    font-size: 1.8rem;
+    font-weight: bold;
+    padding: 20px 60px;
+    border-radius: 50px;
+    text-decoration: none;
+    letter-spacing: 0.1em;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.05);
+    transition: all 0.3s ease;
+    border: 2px solid #555;
+}
+
+.cd-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 30px rgba(255, 255, 255, 0.2);
+    border-color: #fff;
+}
