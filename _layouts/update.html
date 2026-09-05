@@ -1,0 +1,66 @@
+---
+---
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ page.title | escape }} - マミヨバンド</title>
+    <meta name="description" content="{{ page.summary | escape }}">
+    <meta property="og:title" content="{{ page.title | escape }}">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="{{ page.url | absolute_url }}">
+    <meta property="og:description" content="{{ page.summary | escape }}">
+    {% if page.image and page.image != "" %}<meta property="og:image" content="{{ page.image | absolute_url }}">{% endif %}
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="stylesheet" href="{{ '/style.css' | relative_url }}">
+    <link rel="stylesheet" href="{{ '/event-detail.css' | relative_url }}">
+</head>
+<body>
+    <main class="detail-page">
+        {% if page.show_in_live == true and page.show_in_news != true %}
+        <a href="{{ '/index.html#live-info' | relative_url }}" class="detail-back-link">← LIVE INFO一覧に戻る</a>
+        {% else %}
+        <a href="{{ '/index.html#news' | relative_url }}" class="detail-back-link">← NEWS一覧に戻る</a>
+        {% endif %}
+
+        <header class="detail-header">
+            <p class="detail-date">{% if page.show_in_live and page.event_date %}{{ page.event_date | date: "%Y.%m.%d" }}{% else %}{{ page.published_date | date: "%Y.%m.%d" }}{% endif %}　{{ page.category | escape }}</p>
+            <h1 class="detail-title">{{ page.title | escape }}</h1>
+        </header>
+
+        {% if page.image and page.image != "" %}
+        <img src="{{ page.image | relative_url }}" alt="{{ page.image_alt | escape }}" class="detail-image">
+        {% endif %}
+
+        {% if page.lead and page.lead != "" %}<p class="detail-lead">{{ page.lead | escape | newline_to_br }}</p>{% endif %}
+
+        {% assign has_event_info = false %}
+        {% if page.event_date and page.event_date != "" %}{% assign has_event_info = true %}{% endif %}
+        {% if page.venue and page.venue != "" %}{% assign has_event_info = true %}{% endif %}
+        {% if page.performers and page.performers != "" %}{% assign has_event_info = true %}{% endif %}
+        {% if page.open_start and page.open_start != "" %}{% assign has_event_info = true %}{% endif %}
+        {% if page.price and page.price != "" %}{% assign has_event_info = true %}{% endif %}
+        {% if has_event_info %}
+        <section class="event-info" aria-labelledby="event-info-title">
+            <h2 id="event-info-title">公演情報</h2>
+            <dl>
+                {% if page.event_date and page.event_date != "" %}<dt>日程</dt><dd>{{ page.event_date | date: "%Y年%-m月%-d日" | escape }}</dd>{% endif %}
+                {% if page.venue and page.venue != "" %}<dt>会場</dt><dd>{{ page.venue | escape }}</dd>{% endif %}
+                {% if page.performers and page.performers != "" %}<dt>出演</dt><dd>{{ page.performers | escape }}</dd>{% endif %}
+                {% if page.open_start and page.open_start != "" %}<dt>開場・開演</dt><dd>{{ page.open_start | escape }}</dd>{% endif %}
+                {% if page.price and page.price != "" %}<dt>料金</dt><dd>{{ page.price | escape }}</dd>{% endif %}
+            </dl>
+        </section>
+        {% endif %}
+
+        <div class="detail-body">{{ content }}</div>
+
+        {% if page.ticket_url and page.ticket_url != "" %}
+        <p class="detail-ticket"><a href="{{ page.ticket_url | escape }}" rel="noopener noreferrer">{{ page.ticket_label | default: "チケット情報を見る" | escape }}</a></p>
+        {% endif %}
+
+        {% if page.note and page.note != "" %}<p class="detail-note">{{ page.note | escape | newline_to_br }}</p>{% endif %}
+    </main>
+</body>
+</html>
