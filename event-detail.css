@@ -129,6 +129,48 @@
     font-size: 0.85rem;
 }
 
+.detail-body {
+    margin: 36px 0;
+    font-size: 1.05rem;
+    line-height: 1.9;
+}
+
+.detail-body h2,
+.detail-body h3 {
+    margin: 32px 0 14px;
+    color: var(--color-gold);
+    font-family: var(--font-heading-jp);
+}
+
+.detail-body p,
+.detail-body ul,
+.detail-body ol {
+    margin-bottom: 18px;
+}
+
+.detail-body a {
+    color: var(--color-gold);
+    text-decoration: underline;
+}
+
+.detail-ticket {
+    margin: 36px 0;
+    text-align: center;
+}
+
+.detail-ticket a {
+    display: inline-block;
+    padding: 14px 28px;
+    color: var(--color-white);
+    font-weight: 700;
+    background: var(--color-red);
+    border-radius: 999px;
+}
+
+.detail-ticket a:hover {
+    filter: brightness(1.15);
+}
+
 .tour-schedule {
     margin: 42px 0;
 }

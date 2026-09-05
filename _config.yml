@@ -1,0 +1,22 @@
+url: "https://mamiyoband.com"
+baseurl: ""
+encoding: utf-8
+
+collections:
+  updates:
+    output: true
+    permalink: /:name.html
+
+defaults:
+  - scope:
+      path: ""
+      type: updates
+    values:
+      layout: update
+
+exclude:
+  - AGENTS.md
+  - docs
+  - scripts
+  - tests
+  - requirements-dev.txt

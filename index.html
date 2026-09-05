@@ -1,3 +1,5 @@
+---
+---
 <!DOCTYPE html>
 <html lang="ja">
 
@@ -133,6 +135,16 @@
         <section id="news" class="content-section" aria-label="最新情報">
             <h2 class="section-title">NEWS</h2>
             <div class="news-list">
+                <!-- cms-news-start: Pages CMSで追加した記事を新しい順に表示 -->
+                {% assign cms_news = site.updates | where: "show_in_news", true | sort: "published_date" | reverse %}
+                {% for item in cms_news %}
+                <a href="{{ item.url | relative_url }}" class="news-item">
+                    <p class="news-date">{{ item.published_date | date: "%Y.%m.%d" }}</p>
+                    <p class="news-category {{ item.category | downcase | escape }}">{{ item.category | escape }}</p>
+                    <p class="news-title">{{ item.title | escape }}</p>
+                </a>
+                {% endfor %}
+                <!-- cms-news-end -->
                 <a href="news-tour-2026-2027.html" class="news-item">
                     <p class="news-date">2026.07.11</p>
                     <p class="news-category live">LIVE</p>
@@ -204,6 +216,15 @@
         <section id="live-info" class="content-section" aria-label="ライブ情報">
             <h2 class="section-title">LIVE INFO</h2>
             <div class="live-list">
+                <!-- cms-live-start: 管理画面の追加分を、既存の手入力分より上へ開催日順で表示 -->
+                {% assign cms_live = site.updates | where: "show_in_live", true | sort: "event_date" %}
+                {% for item in cms_live %}
+                <a href="{{ item.url | relative_url }}" class="live-item">
+                    <p class="live-date">{{ item.event_date | date: "%Y.%m.%d" }}<span class="live-category {{ item.live_type | downcase | escape }}">{{ item.live_type | escape }}</span></p>
+                    <p class="live-title">{{ item.title | escape }}{% if item.venue and item.venue != "" %} @{{ item.venue | escape }}{% endif %}</p>
+                </a>
+                {% endfor %}
+                <!-- cms-live-end -->
                 <a href="live-20261018.html" class="live-item">
                     <p class="live-date">2026.10.18<span class="live-category band">BAND</span></p>
                     <p class="live-title">もりつぐバンド × マミヨバンド 2MAN LIVE SHOW @南堀江knave（大阪）</p>

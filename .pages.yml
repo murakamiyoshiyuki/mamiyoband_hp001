@@ -1,0 +1,148 @@
+media:
+  - name: update_images
+    label: NEWS・ライブ画像
+    input: 素材/CMS
+    output: /素材/CMS
+    rename: random
+    extensions: [jpg, jpeg, png, webp]
+
+content:
+  - name: updates
+    label: NEWS・ライブ情報
+    type: collection
+    path: _updates
+    format: yaml-frontmatter
+    filename:
+      template: "update-{year}{month}{day}-{hour}{minute}{second}.md"
+      field: false
+    operations:
+      create: true
+      rename: false
+      delete: false
+    view:
+      fields: [title, published_date, category, event_date]
+      primary: title
+      sort: [published_date, event_date, title]
+      search: [title, summary, venue]
+      default:
+        sort: published_date
+        order: desc
+    fields:
+      - name: title
+        label: 見出し
+        type: string
+        required: true
+        options:
+          maxlength: 120
+      - name: published_date
+        label: お知らせ日
+        type: date
+        required: true
+        options:
+          format: yyyy-MM-dd
+      - name: category
+        label: 種類
+        type: select
+        required: true
+        default: INFO
+        options:
+          values: [INFO, LIVE, RELEASE, MEDIA]
+      - name: show_in_news
+        label: NEWSに表示
+        type: boolean
+        default: true
+      - name: show_in_live
+        label: LIVE INFOにも表示
+        type: boolean
+        default: false
+      - name: event_date
+        label: 開催日（LIVE INFO用）
+        type: date
+        default: ""
+        description: LIVE INFOに表示する場合は必須
+        options:
+          format: yyyy-MM-dd
+      - name: live_type
+        label: 公演形態
+        type: select
+        default: BAND
+        options:
+          values: [BAND, ACOUSTIC]
+      - name: summary
+        label: 説明・SNS表示文
+        type: text
+        required: true
+        options:
+          maxlength: 180
+      - name: image
+        label: メイン画像
+        type: image
+        default: ""
+        options:
+          media: update_images
+          path: 素材/CMS
+          rename: random
+          extensions: [jpg, jpeg, png, webp]
+      - name: image_alt
+        label: 画像の説明
+        type: string
+        required: true
+        description: 画像なしの場合は「画像なし」と入力
+        options:
+          maxlength: 180
+      - name: lead
+        label: 冒頭の説明
+        type: text
+        default: ""
+      - name: venue
+        label: 会場
+        type: string
+        default: ""
+      - name: performers
+        label: 出演者
+        type: string
+        default: ""
+      - name: open_start
+        label: 開場・開演
+        type: string
+        default: ""
+        description: 未発表なら「後日発表」
+      - name: price
+        label: 料金
+        type: string
+        default: ""
+        description: 未発表なら「後日発表」
+      - name: ticket_url
+        label: チケットURL
+        type: string
+        default: ""
+        pattern: '^(|https://[^ ]+)$'
+      - name: ticket_label
+        label: チケットボタン文言
+        type: string
+        default: チケット情報を見る
+      - name: note
+        label: 注意・補足
+        type: text
+        default: ""
+      - name: body
+        label: 本文
+        type: rich-text
+        required: true
+        options:
+          format: markdown
+          switcher: false
+          media: update_images
+          path: 素材/CMS
+          rename: random
+          extensions: [jpg, jpeg, png, webp]
+
+settings:
+  hide: true
+  commit:
+    identity: user
+    templates:
+      create: "content: {userName}がNEWS・ライブ情報を追加"
+      update: "content: {userName}が{filename}を更新"
+      delete: "content: {userName}が{filename}を削除"
+      rename: "content: {userName}が{oldFilename}を{newFilename}へ変更"
