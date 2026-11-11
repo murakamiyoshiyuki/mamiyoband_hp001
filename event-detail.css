@@ -224,6 +224,11 @@
     line-height: 1.6;
 }
 
+.tour-stop-status {
+    color: var(--color-gold);
+    font-size: 0.9em;
+}
+
 .tour-stop-arrow {
     color: var(--color-gold);
     font-size: 1.4rem;
